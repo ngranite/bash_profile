@@ -1,0 +1,18 @@
+#pre-requisite, mkdir ~/.ssh/myconnect
+
+host bastion1
+  HostName bastion.mycompany.com
+host bastion2
+  HostName bastion.mycompany.com
+host bastion3
+  HostName bastion.mycompany.com
+
+Host bastion1 bastion2 bastion3
+  ForwardAgent yes
+  ControlMaster auto
+  ControlPath ~/.ssh/myconnect/%r@%h:%p.connection
+  ControlPersist yes
+#  ControlPersist 60m
+
+Host 10.*
+  ProxyJump bastion1
