@@ -3,7 +3,7 @@
 Host bastion
   HostName bastion.mycompany.com
 
-#This helps socket connection can be reused for multiple bastion seesions.
+#This helps socket connection to be reused for multiple bastion seesions.
 #Connect to bastion once and you can have many seesions for hosts behind bastion until ControlPersist expires.
 Host bastion
   ForwardAgent yes
