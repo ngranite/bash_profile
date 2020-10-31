@@ -1,13 +1,11 @@
 #pre-requisite, mkdir ~/.ssh/myconnect
 
-host bastion1
-  HostName bastion.mycompany.com
-host bastion2
-  HostName bastion.mycompany.com
-host bastion3
+Host bastion
   HostName bastion.mycompany.com
 
-Host bastion1 bastion2 bastion3
+#This helps socket connection can be reused for multiple bastion seesions.
+#Connect to bastion once and you can have many seesions for hosts behind bastion until ControlPersist expires.
+Host bastion
   ForwardAgent yes
   ControlMaster auto
   ControlPath ~/.ssh/myconnect/%r@%h:%p.connection
@@ -16,3 +14,21 @@ Host bastion1 bastion2 bastion3
 
 Host 10.*
   ProxyJump bastion1
+
+
+
+#Have more than one bastion?
+Host bastion1
+  HostName bastion1.mycompany.com
+
+Host bastion2
+  HostName bastion2.mycompany.com
+
+Host bastion3
+  HostName bastion3.mycompany.com
+
+Host bastion1 bastion2 bastion3
+  ForwardAgent yes
+  ControlMaster auto
+  ControlPath ~/.ssh/myconnect/%r@%h:%p.connection
+  ControlPersist yes
