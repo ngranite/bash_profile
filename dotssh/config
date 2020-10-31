@@ -1,5 +1,6 @@
 #pre-requisite, mkdir ~/.ssh/myconnect
 
+#Define aliases so you don't have to remember your company name :)
 Host bastion
   HostName bastion.mycompany.com
 
