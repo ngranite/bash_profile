@@ -1,0 +1,1 @@
+- When you are using `less` to view a file, to enter into `vi` mode just hit v.
